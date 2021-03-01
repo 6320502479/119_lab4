@@ -16,17 +16,21 @@ int main()
     {
         p[i]=r[i][0]*4+r[i][1]*2+r[i][2]*1;
     }
-    int max=0,min;
+    int max=0,min=2000,pmax=0,pmin=0;
     for(i=0;i<n-2;i++)
     {
         p3[i]=p[i]+p[i+1]+p[i+2];
-        printf("%d ",p3[i]);
+         if(max<p3[i])
+        {
+            max=p3[i];
+            pmax=i;
+        }
+        if(min>p3[i])
+        {
+            min=p3[i];
+            pmin=i;
+        }
     }
-    for(i=0;i<n-2;i++)
-    {
-        if(max<p3[i])
-            max=i+1;
-    }
-    printf("%d %d",max,min);
+    printf("%d %d",pmax+1,pmin+1);
 
 }
