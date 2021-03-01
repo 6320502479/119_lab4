@@ -1,36 +1,20 @@
-#include <stdio.h>
+#include<stdio.h>
 int main()
 {
-    int n,i,j;
-    scanf("%d",&n);
-    int r[n][3],p[n],p3[n-2];
-    p[0]=0;
-    for(i=0;i<n;i++)
+    char word[200];
+    char edit[200];
+    int i,j=1;
+    scanf("%s",word);
+    edit[0]=word[0];
+    for(i=0;i<sizeof word;i++)
     {
-        for(j=0;j<3;j++)
+        if(word[i]== '\0')
+            break;
+        if(word[i]!=word[i+1])
         {
-            scanf("%d",&r[i][j]);
+            edit[j] = word[i+1];
+            j++;
         }
     }
-    for(i=0;i<n;i++)
-    {
-        p[i]=r[i][0]*4+r[i][1]*2+r[i][2]*1;
-    }
-    int max=0,min=2000,pmax=0,pmin=0;
-    for(i=0;i<n-2;i++)
-    {
-        p3[i]=p[i]+p[i+1]+p[i+2];
-         if(max<p3[i])
-        {
-            max=p3[i];
-            pmax=i;
-        }
-        if(min>p3[i])
-        {
-            min=p3[i];
-            pmin=i;
-        }
-    }
-    printf("%d %d",pmax+1,pmin+1);
-
+    printf("%s",edit);
 }
